@@ -26,7 +26,7 @@ $ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher 
 
 暫定処置として、以下のように起動してください。
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t take-pwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
 これで、ブラウザーで以下のURLを入力するとjupyterの画面になります。
