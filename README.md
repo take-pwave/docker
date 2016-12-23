@@ -11,13 +11,13 @@ Dockerfileは、以下のサイトを参考にしました。
 ### dockerの実行
 キャラクターベースでsageを使用する場合には、以下のコマンドを実行します。
 ```bash
-$ docker run -i -t take-pwave/sagemath
+$ docker run -i -t takepwave/sagemath
 ```
 
 jupyterのノートブックを使用する場合には、以下のコマンドを実行します。
 
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t take-pwave/sagemath --notebook=ipython --ip='*' --port=8888
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath --notebook=ipython --ip='*' --port=8888
 ```
 
 これで、ブラウザーで以下のURLを入力するとjupyterの画面になります。
