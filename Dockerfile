@@ -1,4 +1,3 @@
-#pre{{
 # Sage Installation from Ubuntu PPA
 #
 # VERSION 0.1
@@ -25,9 +24,14 @@ RUN sage -pip install sklearn
 RUN sage -pip install xlsxWriter xlrd
 RUN sage -pip install python-nvd3
 
+COPY sitecustomize.py /usr/lib/sagemath/local/lib/python2.7/site-packages/
+COPY sage_launcher /opt/sage_launcher
+COPY installRpackages.R /opt/installRpackages.R
+RUN sage -R --save </opt/installRpackages.R
+
 RUN useradd --comment "Sage Math" --user-group --groups users --create-home sage
 RUN echo 'sage ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/sage
 
 USER sage
 EXPOSE 8888
-CMD ["/usr/bin/sage"]
+CMD ["/opt/sage_launcher"]
