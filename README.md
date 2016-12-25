@@ -34,6 +34,54 @@ $ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher 
 http://localhost:8888/
 ```
 
+## ローカルディスクのノートブックを使う
+dockerを起動しているマシンにあるノートブックをdockerのsage jupyterで使用するには、dockerの-vオプションを使用します。
+
+```
+-v ローカルのノートブックのパス:/home/sage/notebook
+```
+
+以下は、ローカルの/Users/take/proj/jupyter/MySage/notebookを/home/sage/notebookにマウントした時の例です。
+
+```bash
+$ docker run -v /Users/take/proj/jupyter/MySageMath/notebook/:/home/sage/notebook -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
+```
+
+## コンテナーの操作
+現在動いているコンテナーは、docker psコマンドで確認することができます。-aのオプションを付けると停止しているコンテナーも知ることができます。
+
+ここでキーとなるのは、sage_launcherのCONTAINER IDです。これを控えておいて次の操作をしてみましょう。
+
+```bash
+$ docker ps -a
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                      NAMES
+4a704622db7a        takepwave/sagemath   "/opt/sage_launcher -"   45 minutes ago      Up 45 minutes       127.0.0.1:8888->8888/tcp   berserk_stonebraker
+```
+
+### dockerコンテナーの停止
+実行中のコンテナーを停止するには、docker stopコマンドを使用します。
+
+この時、先ほど控えたCOTAINER IDを使用します。
+
+```bash
+$ docker stop 4a704622db7a
+4a704622db7a
+```
+
+### dockerコンテナー再開
+停止したコンテナーを再開するには、docker startコマンドを使用します。
+
+docker startの後にdocker ps -aで調べたCOTAINER IDを指定します。
+
+```bash
+$ docker ps -a
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS                       PORTS               NAMES
+4a704622db7a        takepwave/sagemath   "/opt/sage_launcher -"   55 minutes ago      Exited (137) 2 minutes ago 
+$ docker start 4a704622db7a
+4a704622db7a
+```
+
+このように一度起動したjupyter環境を簡単に停止、再開することができます。
 
 ## Dockerのインストール
 以下のサイトからご使用の環境にあったDockerをダウンロードし、インストールしてください。
@@ -46,7 +94,7 @@ CentOSの場合は、以下のコマンドでインストールできます。
 $ sudo yum install docker
 ```
 
-Ubuntuの場合には、以下のコマンドでインストールします。
+Ubuntuの場合には、以下のコマンドでインストールできます。
 ```bash
 $ sudo apt-get install docker.io
 ```

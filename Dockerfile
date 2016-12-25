@@ -27,6 +27,9 @@ RUN sage -pip install python-nvd3
 COPY sitecustomize.py /usr/lib/sagemath/local/lib/python2.7/site-packages/
 COPY sage_launcher /opt/sage_launcher
 COPY installRpackages.R /opt/installRpackages.R
+
+RUN apt-get install -y wget
+RUN wget https://cran.r-project.org/src/contrib/Archive/rjags/rjags_3-15.tar.gz
 RUN sage -R --save </opt/installRpackages.R
 
 RUN useradd --comment "Sage Math" --user-group --groups users --create-home sage
