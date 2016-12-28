@@ -18,7 +18,8 @@ jupyterのノートブックを使用する場合には、以下のコマンド�
 (通常ならこれで起動するはずですが、ノートブックでsage kernelを起動すると落ちる障害が発生します)
 
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher --notebook=ipython --ip='*' --port=8888
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+	--notebook=ipython --ip='*' --port=8888
 ```
 
 補足情報：
@@ -26,7 +27,8 @@ $ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher 
 
 暫定処置として、以下のように起動してください。
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+	-sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
 これで、ブラウザーで以下のURLを入力するとjupyterの画面になります。
@@ -44,7 +46,9 @@ dockerを起動しているマシンにあるノートブックをdockerのsage 
 以下は、ローカルの$HOME/proj/jupyter/MySage/notebookを/home/sage/notebookにマウントした時の例です。
 
 ```bash
-$ docker run -v $HOME/proj/jupyter/MySageMath/notebook/:/home/sage/notebook -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
+$ docker run -v $HOME/proj/jupyter/MySageMath/notebook/:/home/sage/notebook \
+	-p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+	-sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
 ## コンテナーの操作
