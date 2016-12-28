@@ -41,14 +41,15 @@ dockerを起動しているマシンにあるノートブックをdockerのsage 
 -v ローカルのノートブックのパス:/home/sage/notebook
 ```
 
-以下は、ローカルの/Users/take/proj/jupyter/MySage/notebookを/home/sage/notebookにマウントした時の例です。
+以下は、ローカルの$HOME/proj/jupyter/MySage/notebookを/home/sage/notebookにマウントした時の例です。
 
 ```bash
-$ docker run -v /Users/take/proj/jupyter/MySageMath/notebook/:/home/sage/notebook -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
+$ docker run -v $HOME/proj/jupyter/MySageMath/notebook/:/home/sage/notebook -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher -sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
 ## コンテナーの操作
-現在動いているコンテナーは、docker psコマンドで確認することができます。-aのオプションを付けると停止しているコンテナーも知ることができます。
+現在動いているコンテナーは、docker psコマンドで確認することができます。
+-aのオプションを付けると停止しているコンテナーも知ることができます。
 
 ここでキーとなるのは、sage_launcherのCONTAINER IDです。これを控えておいて次の操作をしてみましょう。
 
@@ -61,7 +62,7 @@ CONTAINER ID        IMAGE                COMMAND                  CREATED       
 ### dockerコンテナーの停止
 実行中のコンテナーを停止するには、docker stopコマンドを使用します。
 
-この時、先ほど控えたCOTAINER IDを使用します。
+この時、先ほど控えたCONTAINER IDを使用します。
 
 ```bash
 $ docker stop 4a704622db7a
@@ -71,7 +72,7 @@ $ docker stop 4a704622db7a
 ### dockerコンテナー再開
 停止したコンテナーを再開するには、docker startコマンドを使用します。
 
-docker startの後にdocker ps -aで調べたCOTAINER IDを指定します。
+docker startの後にdocker ps -aで調べたCONTAINER IDを指定します。
 
 ```bash
 $ docker ps -a
