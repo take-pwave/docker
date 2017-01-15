@@ -21,7 +21,7 @@ RUN sage -pip install Wand
 RUN sage -pip install seaborn
 RUN sage -pip install pyjags
 RUN sage -pip install sklearn
-RUN sage -pip install xlsxWriter xlrd
+RUN sage -pip install xlsxWriter xlrd xlwt
 RUN sage -pip install python-nvd3
 
 COPY sitecustomize.py /usr/lib/sagemath/local/lib/python2.7/site-packages/
