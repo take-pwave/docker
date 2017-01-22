@@ -32,6 +32,9 @@ RUN apt-get install -y wget
 RUN wget https://cran.r-project.org/src/contrib/Archive/rjags/rjags_3-15.tar.gz
 RUN sage -R --save </opt/installRpackages.R
 
+RUN apt-get install -y mecab libmecab-dev mecab-ipadic-utf8
+RUN sage -pip install mecab-python
+
 RUN useradd --comment "Sage Math" --user-group --groups users --create-home sage
 RUN echo 'sage ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/sage
 
