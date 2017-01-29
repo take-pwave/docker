@@ -1,0 +1,3 @@
+[submodule "primesage"]
+	path = primesage
+	url = https://github.com/take-pwave/primesage.git
