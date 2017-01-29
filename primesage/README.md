@@ -1,24 +1,24 @@
-# Dockerを使ったsagemath環境の構築
+# プライマリsagemath環境の構築
 
-このページでは、Vagrantで構築した環境と同じものをDockerで構築するための
-方法を紹介します。
+sageのPPAを使ってsagemathの環境を提供するためのイメージです。
 
-## Dockerfile
-Dockerfileは、以下のサイトを参考にしました。
+基本は、sageユーザでしかコマンドを実行できません。
 
-- https://github.com/sagemath/docker
+また、sageユーザは、以下のコマンドしかsudoで実行することができません。
+- apt-get
+- sage
 
 ### dockerの実行
 キャラクターベースでsageを使用する場合には、以下のコマンドを実行します。
 ```bash
-$ docker run -i -t takepwave/sagemath
+$ docker run -i -t takepwave/primesage
 ```
 
 jupyterのノートブックを使用する場合には、以下のコマンドを実行します。
 (通常ならこれで起動するはずですが、ノートブックでsage kernelを起動すると落ちる障害が発生します)
 
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/primesage /opt/sage_launcher \
 	--notebook=ipython --ip='*' --port=8888
 ```
 
@@ -27,7 +27,7 @@ $ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher 
 
 暫定処置として、以下のように起動してください。
 ```bash
-$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/primesage /opt/sage_launcher \
 	-sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
@@ -43,11 +43,11 @@ dockerを起動しているマシンにあるノートブックをdockerのsage 
 -v ローカルのノートブックのパス:/home/sage/notebook
 ```
 
-以下は、ローカルの$HOME/proj/jupyter/MySage/notebookを/home/sage/notebookにマウントした時の例です。
+以下は、ローカルの$HOME/notebookを/home/sage/notebookにマウントした時の例です。
 
 ```bash
-$ docker run -v $HOME/proj/jupyter/MySageMath/notebook/:/home/sage/notebook \
-	-p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+$ docker run -v $HOME/notebook/:/home/sage/notebook \
+	-p 127.0.0.1:8888:8888 -d -t takepwave/primesage /opt/sage_launcher \
 	-sh -c "ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
