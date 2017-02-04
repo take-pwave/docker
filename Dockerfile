@@ -8,7 +8,6 @@ USER root
 RUN apt-get install -y libmagickwand-dev
 RUN apt-get install -y jags 
 RUN apt-get install -y gdal-bin
-RUN apt-get install -y sagemath-upstream-binary-full
 
 COPY installRpackages.R /opt/installRpackages.R
 

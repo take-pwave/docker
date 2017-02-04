@@ -1,14 +1,38 @@
 # Dockerを使ったsagemath環境の構築
 
-このページでは、Vagrantで構築した環境と同じものをDockerで構築するための
-方法を紹介します。
+このページでは、
+[Vagrantで構築したjupyterノートブック](https://github.com/take-pwave/notebook)
+が動作する環境をDockerで構築するための方法を紹介します。
 
-## Dockerfile
-Dockerfileは、以下のサイトを参考にしました。
+## 必要なパッケージ
+インストールの必要なUbuntu用のパッケージは、以下の通りです。
+- libmagickwand-dev: 画像の変換用
+- jags: 階層ベイズ解析ツール
+- gdal-bin: 地理データ変換ツール
+- mecab, libmecab-dev, mecab-ipadic-utf8: 日本語形態素解析ツール
 
-- https://github.com/sagemath/docker
+python用のパッケージは、以下の通りです。
+- pandas
+- ggplot
+- Wand
+- seaborn
+- pyjags
+- sklearn
+- xlsWriter xlrd xlwt
+- python-nvd3
+- mecab-python
 
-### dockerの実行
+Rでは、以下のパッケージをインストールしました。
+- ggplot2
+- jsonlite
+- glmmML
+- coda
+- rjags
+- car
+- FNN
+- MASS
+
+## dockerの実行
 キャラクターベースでsageを使用する場合には、以下のコマンドを実行します。
 ```bash
 $ docker run -i -t takepwave/sagemath
