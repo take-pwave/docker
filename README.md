@@ -10,6 +10,10 @@
 - jags: 階層ベイズ解析ツール
 - gdal-bin: 地理データ変換ツール
 - mecab, libmecab-dev, mecab-ipadic-utf8: 日本語形態素解析ツール
+- build-essential cmake unzip: ビルドツール
+- libopenblas-dev liblapack-dev: BLAS用
+- libhdf5-serial-dev: HDF5用
+- graphviz: kerasモデル描画用
 
 python用のパッケージは、以下の通りです。
 - pandas
@@ -21,6 +25,9 @@ python用のパッケージは、以下の通りです。
 - xlsWriter xlrd xlwt
 - python-nvd3
 - mecab-python
+- pydot-ng
+- tensorflow
+- keras
 
 Rでは、以下のパッケージをインストールしました。
 - ggplot2
