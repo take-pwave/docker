@@ -35,6 +35,7 @@ RUN apt-get install -y graphviz
 RUN sage -pip install pydot-ng
 RUN sage -pip install tensorflow
 RUN sage -pip install keras
+RUN sage -pip install h5py
 
 USER sage
 CMD ["/opt/sage_launcher"]
