@@ -36,6 +36,7 @@ RUN sage -pip install pydot-ng
 RUN sage -pip install tensorflow
 RUN sage -pip install keras
 RUN sage -pip install h5py
+RUN sage -pip install daft
 
 USER sage
 CMD ["/opt/sage_launcher"]
