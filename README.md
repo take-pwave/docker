@@ -14,6 +14,7 @@
 - libopenblas-dev liblapack-dev: BLAS用
 - libhdf5-serial-dev: HDF5用
 - graphviz: kerasモデル描画用
+- openscad: ScriptベースのCAD
 
 python用のパッケージは、以下の通りです。
 - pandas
@@ -28,6 +29,7 @@ python用のパッケージは、以下の通りです。
 - pydot-ng
 - tensorflow
 - keras
+- numpy-stl
 
 Rでは、以下のパッケージをインストールしました。
 - ggplot2

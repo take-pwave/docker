@@ -10,6 +10,9 @@ RUN apt-get install -y libmagickwand-dev
 RUN apt-get install -y jags 
 RUN apt-get install -y gdal-bin
 
+# for nloptr_1.0.4.tar.gz error
+RUN apt-get install -y libnlopt-dev
+
 COPY installRpackages.R /opt/installRpackages.R
 
 RUN apt-get install -y wget
@@ -37,6 +40,9 @@ RUN sage -pip install tensorflow
 RUN sage -pip install keras
 RUN sage -pip install h5py
 RUN sage -pip install daft
+
+RUN apt-get install -y openscad
+RUN sage -pip install numpy-stl
 
 USER sage
 CMD ["/opt/sage_launcher"]
