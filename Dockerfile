@@ -42,7 +42,8 @@ RUN sage -pip install h5py
 RUN sage -pip install daft
 
 RUN apt-get install -y openscad
-RUN sage -pip install numpy-stl
+RUN sage -pip install numpy-stl solidpython
+RUN apt-get install -y git
 
 USER sage
 CMD ["/opt/sage_launcher"]
