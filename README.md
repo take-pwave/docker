@@ -30,6 +30,10 @@ python用のパッケージは、以下の通りです。
 - tensorflow
 - keras
 - numpy-stl
+- wfdb
+- pytorch
+- torchvision
+- doc2tex
 
 Rでは、以下のパッケージをインストールしました。
 - ggplot2

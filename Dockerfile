@@ -43,6 +43,12 @@ RUN sage -pip install daft
 
 RUN apt-get install -y openscad
 RUN sage -pip install numpy-stl solidpython
+RUN sage -pip install --upgrade pip
+RUN sage -pip install wfdb 
+RUN sage -pip install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp27-cp27mu-linux_x86_64.whl
+RUN sage -pip install torchvision
+RUN sage -pip install dot2tex
+RUN apt-get update
 RUN apt-get install -y git
 
 USER sage
