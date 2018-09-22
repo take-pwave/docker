@@ -50,6 +50,7 @@ RUN sage -pip install torchvision
 RUN sage -pip install dot2tex
 RUN apt-get update
 RUN apt-get install -y git
+RUN sage -pip install gym
 
 USER sage
 CMD ["/opt/sage_launcher"]
