@@ -51,6 +51,7 @@ RUN sage -pip install dot2tex
 RUN apt-get update
 RUN apt-get install -y git
 RUN sage -pip install gym
+RUN apt-get install -y fonts-ipafont
 
 USER sage
 CMD ["/opt/sage_launcher"]
