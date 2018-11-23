@@ -54,6 +54,7 @@ RUN sage -pip install gym
 RUN apt-get update
 RUN apt-get install -y fonts-ipafont
 RUN apt-get install -y python-opengl xvfb
+RUN sage -pip install JSAnimation
 
 USER sage
 CMD ["/opt/sage_launcher"]
