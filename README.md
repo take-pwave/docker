@@ -15,6 +15,9 @@
 - libhdf5-serial-dev: HDF5用
 - graphviz: kerasモデル描画用
 - openscad: ScriptベースのCAD
+- fonts-ipafont 日本語フォント
+- python-opengl OpenAIのアニメーション用
+- xvfb
 
 python用のパッケージは、以下の通りです。
 - pandas
@@ -34,6 +37,8 @@ python用のパッケージは、以下の通りです。
 - pytorch
 - torchvision
 - doc2tex
+- gym OpenAI
+- JSAnimation
 
 Rでは、以下のパッケージをインストールしました。
 - ggplot2
@@ -71,6 +76,15 @@ $ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher 
 これで、ブラウザーで以下のURLを入力するとjupyterの画面になります。
 ```
 http://localhost:8888/
+```
+
+### OpenAIのアニメーション
+OpenAIのフレームをアニメーションで表示する場合には、jupyterのバックグラウンドでxvfbサーバを起動する必要があります。
+
+dockerのrunコマンドを以下のように変更してください。
+```bash
+$ docker run -p 127.0.0.1:8888:8888 -d -t takepwave/sagemath /opt/sage_launcher \
+	-sh -c "nohup xvfb-run -s '-screen 0 1400x900x24' ipython notebook --no-browser --ip='0.0.0.0' --port=8888"
 ```
 
 ## ローカルディスクのノートブックを使う
