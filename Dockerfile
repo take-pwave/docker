@@ -51,8 +51,9 @@ RUN sage -pip install dot2tex
 RUN apt-get update
 RUN apt-get install -y git
 RUN sage -pip install gym
+RUN apt-get update
 RUN apt-get install -y fonts-ipafont
-RUN apt-get install python-opengl xvfb
+RUN apt-get install -y python-opengl xvfb
 
 USER sage
 CMD ["/opt/sage_launcher"]
